@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, FormControl, FormGroupDirective, NgForm, Valida
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
-  styleUrls: ['./filters.component.sass'],
+  styleUrls: ['./filters.component.css'],
   encapsulation: ViewEncapsulation.None
 })
 export class FiltersComponent implements OnInit {
@@ -29,7 +29,11 @@ export class FiltersComponent implements OnInit {
       dateType: new FormControl(
         { value: '' },
         [Validators.required]
-      )
+      ),
+      solDate: new FormControl(
+        { value: '' },
+        [Validators.required]
+      ),
     })
   }
 
