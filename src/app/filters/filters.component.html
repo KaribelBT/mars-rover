@@ -1,0 +1,43 @@
+<div>
+
+    <div>
+
+        <form [formGroup]="search" >
+
+            <!-- Rover -->
+            <mat-form-field>
+                <mat-select 
+                    formControlName="rover"
+                    placeholder="Rover"
+                >
+                    <mat-option *ngFor="let rover of rovers" [value]="rover"> 
+                        {{ rover }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <!-- Date -->
+            <mat-form-field>
+                <mat-select 
+                    formControlName="date"
+                    placeholder="Date"
+                    (selectionChange)="calendarSelected($event.value)"
+                >
+                    <mat-option *ngFor="let dateType of dateTypes" [value]="dateType"> 
+                        {{ dateType }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div *ngIf="calendarType === 'sol'">
+                CALENDARIOOOOO AÑOOO
+            </div>
+            
+            <div *ngIf="calendarType === 'earth'"> 
+                CALENDARIOOOOO TIERRAA
+            </div>
+
+        </form>
+        
+    </div>
+</div>
