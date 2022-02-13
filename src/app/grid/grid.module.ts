@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GridComponent } from './grid.component';
-
+import { CardComponent } from './card/card.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
   declarations: [
-    GridComponent
+    GridComponent,
+    CardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatCardModule
   ],
   exports: [
     GridComponent
