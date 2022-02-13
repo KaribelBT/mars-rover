@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'mars-rover';
+
+  formData: any = {};
+
+  constructor() { }
+
+  getImages(formData: any){
+    this.formData = formData;
+    console.log(this.formData);    
+  }
+
+
 }

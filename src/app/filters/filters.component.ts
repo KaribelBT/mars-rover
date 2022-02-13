@@ -1,9 +1,12 @@
 import { 
   Component, 
+  EventEmitter, 
   OnInit,
+  Output,
   ViewEncapsulation
 } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-filters',
@@ -18,6 +21,8 @@ export class FiltersComponent implements OnInit {
   dateTypes: string[]= ['sol', 'earth'];
   calendarType: string = '';
 
+  @Output() formData = new EventEmitter<object>();
+  
   constructor(
     private _formBuilder: FormBuilder,
   ) { 
@@ -34,7 +39,7 @@ export class FiltersComponent implements OnInit {
         { value: '' },
         [Validators.required]
       ),
-      earthDate: new FormControl(
+      earth_date: new FormControl(
         { value: '' },
         [Validators.required]
       ),
@@ -49,9 +54,15 @@ export class FiltersComponent implements OnInit {
     this.calendarType = event;
   }
   
-  public searchSubmit() {
-    console.log(this.search.value)
-
+  public searchSubmit(formDirective: FormGroupDirective) {
+    this.formData.emit({
+      rover: this.search.value.rover,
+      dateType: this.search.value.dateType,
+      sol: this.search.value.sol,
+      earth_date: moment(this.search.value.earth_date).format('YYYY-MM-DD')
+    })
+    formDirective.resetForm();
+    this.search.reset(); 
   }
 
 }

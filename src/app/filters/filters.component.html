@@ -2,7 +2,12 @@
 
     <div class="form-container">
 
-        <form class="form" [formGroup]="search"(submit)="searchSubmit()" >
+        <form 
+            class="form" 
+            [formGroup]="search" 
+            #formDirective="ngForm" 
+            (submit)="searchSubmit(formDirective)" 
+        >
 
             <div class="inputs">
                 <!-- Rover -->
@@ -52,7 +57,7 @@
                     class="form-element-container"
                 >
                     <mat-label>Earth Date</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="earthDate">
+                    <input matInput [matDatepicker]="picker" formControlName="earth_date">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>     
@@ -64,11 +69,7 @@
                 </button>
                 <button type="button" mat-stroked-button color="primary">
                     <mat-icon aria-hidden="false" aria-label="search icon" class="material-icons color_white"> favorite</mat-icon>
-                </button>                
-                <button type="button" mat-stroked-button color="primary">
-                    <mat-icon aria-hidden="false" aria-label="search icon" class="material-icons color_white">delete</mat-icon> 
                 </button>
-                
             </div>
             
 
