@@ -34,6 +34,10 @@ export class FiltersComponent implements OnInit {
         { value: '' },
         [Validators.required]
       ),
+      earthDate: new FormControl(
+        { value: '' },
+        [Validators.required]
+      ),
     })
   }
 
@@ -45,5 +49,9 @@ export class FiltersComponent implements OnInit {
     this.calendarType = event;
   }
   
+  public searchSubmit() {
+    console.log(this.search.value)
+
+  }
 
 }

@@ -2,7 +2,7 @@
 
     <div class="form-container">
 
-        <form class="form" [formGroup]="search" >
+        <form class="form" [formGroup]="search"(submit)="searchSubmit()" >
 
             <div class="inputs">
                 <!-- Rover -->
@@ -33,7 +33,10 @@
                 </mat-form-field>
 
                 <!-- Sol Date -->
-                <mat-form-field *ngIf="calendarType === 'sol'" class="form-element-container"> 
+                <mat-form-field 
+                    *ngIf="calendarType === 'sol'" 
+                    class="form-element-container"
+                > 
                     <mat-label>Sol Date</mat-label>
                     <input 
                         type="number" 
@@ -43,18 +46,29 @@
                     >                
                 </mat-form-field>
                 <!-- Earth Date -->
-                <mat-form-field *ngIf="calendarType === 'earth'" appearance="fill" class="form-element-container">
+                <mat-form-field 
+                    *ngIf="calendarType === 'earth'" 
+                    appearance="fill" 
+                    class="form-element-container"
+                >
                     <mat-label>Earth Date</mat-label>
-                    <input matInput [matDatepicker]="picker">
+                    <input matInput [matDatepicker]="picker" formControlName="earthDate">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>     
             </div>   
             
             <div class="buttons">
-                <mat-icon aria-hidden="false" aria-label="search icon" class="material-icons color_white">search</mat-icon>
-                <mat-icon aria-hidden="false" aria-label="search icon" class="material-icons color_white"> favorite</mat-icon>
-                <mat-icon aria-hidden="false" aria-label="search icon" class="material-icons color_white">delete</mat-icon> 
+                <button type="submit" mat-stroked-button color="primary">
+                    <mat-icon aria-hidden="false" aria-label="search icon" class="material-icons color_white">search</mat-icon>
+                </button>
+                <button type="button" mat-stroked-button color="primary">
+                    <mat-icon aria-hidden="false" aria-label="search icon" class="material-icons color_white"> favorite</mat-icon>
+                </button>                
+                <button type="button" mat-stroked-button color="primary">
+                    <mat-icon aria-hidden="false" aria-label="search icon" class="material-icons color_white">delete</mat-icon> 
+                </button>
+                
             </div>
             
 
