@@ -16,6 +16,8 @@ export class AppComponent {
     rover: '',
   };
 
+  orderedPhotos: any[] = [];
+
   constructor(
     private _appService: AppService
   ) { }
@@ -24,8 +26,8 @@ export class AppComponent {
     this.searchData = searchData;
     
     this._appService.getRoversData(this.searchData)
-      .subscribe(result=>{
-        console.log(result)
+      .subscribe((result: any)=>{
+        this.orderedPhotos = [...result.photos].reverse();
       })
 
   }

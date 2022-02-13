@@ -100,7 +100,7 @@ export class FiltersComponent implements AfterViewInit {
         }if(form.value.dateType === 'earth'){
             obj.earth_date = moment(form.value.date).format('YYYY-MM-DD')
         }
-        if(form.value.camera.length){
+        if(form.value.camera && form.value.camera.length){
             obj.camera = form.value.camera
         }
         return obj
@@ -117,7 +117,6 @@ export class FiltersComponent implements AfterViewInit {
 
     public roverSelected(event:string) {
         this.roverOption = event;
-        console.log(this.resetBtn);
     }
 
     public searchSubmit() {  

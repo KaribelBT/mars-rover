@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-grid',
@@ -7,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GridComponent implements OnInit {
 
+  @Input() orderedPhotos: any[] = [];
+  
   constructor() { }
 
   ngOnInit(): void {
-    console.log('grid')
+    console.log(this.orderedPhotos)
   }
 
 }
