@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { SearchData } from '../interfaces/search-data';
 import { StorageService } from '../storage.service';
 
@@ -12,6 +12,8 @@ export class FavoritesComponent {
 
   favorites:SearchData[] = [];
 
+  @Output() searchData = new EventEmitter<SearchData>();
+
   constructor(
     _storageService: StorageService
   ) {
@@ -21,7 +23,11 @@ export class FavoritesComponent {
         })
   }
 
-  deleteFav(id:number) {
+  public searchSubmit(data:SearchData){
+    this.searchData.emit(data);
+  }
+
+  public deleteFav(id:number) {
     this.favorites.splice(this.favorites.findIndex(function(i){
       return i.id === id;
     }), 1);

@@ -123,8 +123,6 @@ export class FiltersComponent implements AfterViewInit {
     public searchSubmit() {  
         this.searchData.emit(this.parseSearchData(this.search));
         this.resetValidation();
-        
-        
     }
 
     public addFavorite() {
@@ -139,7 +137,6 @@ export class FiltersComponent implements AfterViewInit {
             searchValues = parsedData
         }
         this._storageService.theItem = JSON.stringify(searchValues)
-        // localStorage.setItem('favoriteSearch', JSON.stringify(searchValues))    
     }
 
     public resetForm(formDirective: FormGroupDirective){
