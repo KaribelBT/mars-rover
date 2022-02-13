@@ -88,7 +88,7 @@ export class FiltersComponent implements OnInit {
         }if(form.value.dateType === 'earth'){
             obj.earth_date = moment(form.value.date).format('YYYY-MM-DD')
         }
-        if(form.value.camera.value !== ''){
+        if(form.value.camera.length){
             obj.camera = form.value.camera
         }
         return obj

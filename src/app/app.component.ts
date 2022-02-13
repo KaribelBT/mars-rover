@@ -13,10 +13,6 @@ export class AppComponent {
 
   searchData: SearchData = {
     rover: '',
-    dateType: '',
-    sol: '',
-    earth_date: '',
-    camera: ''
   };
 
   constructor(
@@ -25,10 +21,11 @@ export class AppComponent {
 
   getImages(searchData: any){
     this.searchData = searchData;
-    console.log(this.searchData); 
-    this._appService.getRoversData().subscribe(result=>{
-      console.log(result)
-    })
+    
+    this._appService.getRoversData(this.searchData)
+      .subscribe(result=>{
+        console.log(result)
+      })
 
   }
 

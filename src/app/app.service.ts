@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, retry } from 'rxjs/operators';
 import * as moment from 'moment';
+import { SearchData } from './interfaces/search-data';
 
 @Injectable()
 export class AppService {
@@ -14,8 +15,11 @@ export class AppService {
         private _httpClient: HttpClient,
     ) {}
 
-    getRoversData(): Observable<any[]> {
-        const url = `${this.api_url}opportunity/photos?sol=1000&api_key=${this.api_key}`;
+    getRoversData(searchData: SearchData): Observable<any[]> {
+        const date = searchData.earth_date ? `earth_date=${searchData.earth_date}` : `sol=${searchData.sol}`
+        const camera = searchData.camera ? `&camera=${searchData.camera}` : ''
+
+        const url = `${this.api_url}${searchData.rover}/photos?${date}${camera}&api_key=${this.api_key}`;
 
         return this._httpClient
             .get<any[]>(url)
