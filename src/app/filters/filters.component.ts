@@ -3,6 +3,7 @@ import {
     Component, 
     ElementRef, 
     EventEmitter, 
+    OnInit, 
     Output,
     ViewChild,
     ViewEncapsulation
@@ -37,7 +38,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     encapsulation: ViewEncapsulation.None
 })
 
-export class FiltersComponent implements AfterViewInit {
+export class FiltersComponent implements OnInit, AfterViewInit {
 
     rovers: string[]= ['curiosity', 'opportunity', 'spirit'];
     dateTypes: string[]= ['sol', 'earth'];
@@ -83,7 +84,10 @@ export class FiltersComponent implements AfterViewInit {
         })
         
     }
-
+    ngOnInit(): void {
+        let defaultSearch = {id: 123, rover:'curiosity', sol:'1000'}
+        this.searchData.emit(defaultSearch);
+    }
     ngAfterViewInit(): void {
         if(this.resetBtn){
             this.resetBtn._elementRef.nativeElement.click();

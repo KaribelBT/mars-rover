@@ -5,14 +5,10 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.css']
 })
-export class GridComponent implements OnInit {
+export class GridComponent {
 
   @Input() orderedPhotos: any[] = [];
-  
-  constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.orderedPhotos)
-  }
+  constructor() { }
 
 }

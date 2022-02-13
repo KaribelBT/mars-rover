@@ -1,0 +1,9 @@
+.card-container {
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}

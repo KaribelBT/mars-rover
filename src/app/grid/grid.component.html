@@ -1,3 +1,4 @@
-<div *ngFor="let photo of orderedPhotos">
-    <app-card [photo]="photo"></app-card>
+<div class="card-container">
+    <mat-spinner *ngIf="orderedPhotos.length === 0"></mat-spinner>
+    <app-card *ngFor="let photo of orderedPhotos" [photo]="photo"></app-card>
 </div>

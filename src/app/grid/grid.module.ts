@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { GridComponent } from './grid.component';
 import { CardComponent } from './card/card.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { MatCardModule } from '@angular/material/card';
   ],
   imports: [
     CommonModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     GridComponent
