@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SearchData } from './interfaces/search-data';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,13 @@ export class AppComponent {
 
   title = 'mars-rover';
 
-  formData: any = {};
+  formData: SearchData = {
+    rover: '',
+    dateType: '',
+    sol: '',
+    earth_date: '',
+    camera: ''
+  };
 
   constructor() { }
 

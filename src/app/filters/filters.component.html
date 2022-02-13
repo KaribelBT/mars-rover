@@ -16,10 +16,28 @@
                     <mat-select 
                         formControlName="rover"
                         placeholder="Select Rover"
+                        (selectionChange)="roverSelected($event.value)"
                     >
+                    <div></div>
                         <mat-option *ngFor="let rover of rovers" [value]="rover"> 
                             {{ rover }}
                         </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                 <!-- Camera -->                 
+                <mat-form-field class="form-element-container">
+                    <mat-label>Camera</mat-label>
+                    <mat-select 
+                        formControlName="camera"
+                        placeholder="Select Camera"                        
+                    >
+                        <div *ngIf="roverOption === 'curiosity'">
+                            <mat-option *ngFor="let camera of cameras.curiosity" [value]="camera"> 
+                                {{ camera }}
+                            </mat-option>
+                        </div>
+                        
                     </mat-select>
                 </mat-form-field>
 
