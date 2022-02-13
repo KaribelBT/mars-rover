@@ -10,7 +10,7 @@ export class AppComponent {
 
   title = 'mars-rover';
 
-  formData: SearchData = {
+  searchData: SearchData = {
     rover: '',
     dateType: '',
     sol: '',
@@ -20,9 +20,9 @@ export class AppComponent {
 
   constructor() { }
 
-  getImages(formData: any){
-    this.formData = formData;
-    console.log(this.formData);    
+  getImages(searchData: any){
+    this.searchData = searchData;
+    console.log(this.searchData);    
   }
 
 

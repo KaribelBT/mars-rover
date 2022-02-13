@@ -6,7 +6,7 @@
             class="form" 
             [formGroup]="search" 
             #formDirective="ngForm" 
-            (submit)="searchSubmit(formDirective)" 
+            (ngSubmit)="searchSubmit()" 
         >
 
             <div class="inputs">
@@ -17,12 +17,16 @@
                         formControlName="rover"
                         placeholder="Select Rover"
                         (selectionChange)="roverSelected($event.value)"
+                        [errorStateMatcher]="matcher"
+
                     >
-                    <div></div>
                         <mat-option *ngFor="let rover of rovers" [value]="rover"> 
                             {{ rover }}
                         </mat-option>
                     </mat-select>
+                    <mat-error *ngIf="search.controls['rover'].hasError('required')" class="form-error">
+                        {{errorMessages.required}}
+                    </mat-error>
                 </mat-form-field>
 
                  <!-- Camera -->                 
@@ -46,9 +50,11 @@
                             <mat-option *ngFor="let camera of cameras.spirit" [value]="camera"> 
                                 {{ camera }}
                             </mat-option>
-                        </div>
-                        
+                        </div>   
                     </mat-select>
+                    <mat-error *ngIf="search.controls['camera'].hasError('required')" class="form-error">
+                        {{errorMessages.required}}
+                    </mat-error>
                 </mat-form-field>
 
                 <!-- Date Type -->
@@ -63,6 +69,9 @@
                             {{ dateType }}
                         </mat-option>
                     </mat-select>
+                    <mat-error *ngIf="search.controls['dateType'].hasError('required')" class="form-error">
+                        {{errorMessages.required}}
+                    </mat-error>             
                 </mat-form-field>
 
                 <!-- Sol Date -->
@@ -74,9 +83,12 @@
                     <input 
                         type="number" 
                         matInput 
-                        formControlName="solDate"
+                        formControlName="date"
                         placeholder="Select sol date"
-                    >                
+                    >   
+                    <mat-error *ngIf="search.controls['date'].hasError('required')" class="form-error">
+                        {{errorMessages.required}}
+                    </mat-error>      
                 </mat-form-field>
                 <!-- Earth Date -->
                 <mat-form-field 
@@ -85,18 +97,25 @@
                     class="form-element-container"
                 >
                     <mat-label>Earth Date</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="earth_date">
+                    <input matInput [matDatepicker]="picker" formControlName="date">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>     
+                    <mat-error *ngIf="search.controls['date'].hasError('required')" class="form-error">
+                        {{errorMessages.required}}
+                    </mat-error>
+                </mat-form-field>   
+
             </div>   
             
             <div class="buttons">
-                <button type="submit" mat-stroked-button color="primary">
+                <button type="submit" mat-stroked-button color="primary" [disabled]="!search.valid">
                     <mat-icon aria-hidden="false" aria-label="search icon" class="material-icons color_white">search</mat-icon>
                 </button>
-                <button (click)="addFavorite()" type="button" mat-stroked-button color="primary">
+                <button (click)="addFavorite(formDirective)" type="button" mat-stroked-button color="primary" [disabled]="!search.valid">
                     <mat-icon aria-hidden="false" aria-label="search icon" class="material-icons color_white"> favorite</mat-icon>
+                </button>
+                <button (click)="resetForm(formDirective)" type="button" mat-stroked-button color="primary">
+                    <mat-icon aria-hidden="false" aria-label="search icon" class="material-icons color_white"> delete</mat-icon>
                 </button>
             </div>
             
