@@ -1,20 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchData } from '../interfaces/search-data';
+import { StorageService } from '../storage.service';
+
 
 @Component({
   selector: 'app-favorites',
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.css']
 })
-export class FavoritesComponent implements OnInit {
+export class FavoritesComponent {
 
   favorites:SearchData[] = [];
 
-  constructor() { }
-
-  ngOnInit(): void {
-    let storedData: any = localStorage.getItem('favoriteSearch')
-    this.favorites = JSON.parse(storedData)
+  constructor(
+    _storageService: StorageService
+  ) {
+      _storageService.itemValue
+        .subscribe((nextValue) => {
+          this.favorites = JSON.parse(nextValue)
+        })
   }
 
   deleteFav(id:number) {

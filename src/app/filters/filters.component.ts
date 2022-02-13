@@ -15,12 +15,13 @@ import {
 import { ErrorStateMatcher } from '@angular/material/core';
 import * as moment from 'moment';
 import { SearchData } from '../interfaces/search-data';
+import { StorageService } from '../storage.service'
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
-isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-}
+    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+        const isSubmitted = form && form.submitted;
+        return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+    }
 }
 
 @Component({
@@ -54,6 +55,7 @@ export class FiltersComponent {
 
     constructor(
         private _formBuilder: FormBuilder,
+        private _storageService: StorageService
     ) { 
         this.search = this._formBuilder.group({
             rover: new FormControl(
@@ -121,16 +123,17 @@ export class FiltersComponent {
             parsedData.push(searchValue)
             searchValues = parsedData
         }
-        localStorage.setItem('favoriteSearch', JSON.stringify(searchValues))    
+        this._storageService.theItem = JSON.stringify(searchValues)
+        // localStorage.setItem('favoriteSearch', JSON.stringify(searchValues))    
     }
 
     public resetForm(formDirective: FormGroupDirective){
         if(formDirective) {
-        formDirective.resetForm();
-        this.search.reset();
-        this.calendarType = '';
-        this.roverOption = ''; 
-        this.resetValidation(); 
+            formDirective.resetForm();
+            this.search.reset();
+            this.calendarType = '';
+            this.roverOption = ''; 
+            this.resetValidation(); 
         }    
     }
 }
