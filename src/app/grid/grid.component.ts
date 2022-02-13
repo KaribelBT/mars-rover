@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { SearchData } from '../interfaces/search-data';
 
 @Component({
   selector: 'app-grid',
@@ -8,7 +9,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class GridComponent {
 
   @Input() orderedPhotos: any[] = [];
-
+  @Input() searchData: SearchData = {id: 123, rover:'curiosity', sol:'1000'};
+  
   constructor() { }
 
 }

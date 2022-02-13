@@ -7,3 +7,8 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+
+.title {
+    text-align: center;
+    color: white;
+}

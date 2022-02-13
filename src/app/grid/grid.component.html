@@ -1,4 +1,10 @@
-<div class="card-container">
+<h2 class="title">
+    Results for rover: {{searchData.rover}}, 
+    <span *ngIf="searchData.camera"> camera: {{searchData.camera}},</span>  
+    <span *ngIf="searchData.sol"> Sol date: {{searchData.sol}}</span> 
+    <span *ngIf="searchData.earth_date"> Earth date: {{searchData.earth_date}}</span> 
+</h2>
+<div class="card-container">    
     <mat-spinner *ngIf="orderedPhotos.length === 0"></mat-spinner>
     <app-card *ngFor="let photo of orderedPhotos" [photo]="photo"></app-card>
 </div>

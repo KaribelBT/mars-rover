@@ -17,7 +17,7 @@ export class AppComponent {
   };
 
   orderedPhotos: any[] = [];
-
+  
   constructor(
     private _appService: AppService
   ) { }
