@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchData } from '../interfaces/search-data';
 
 @Component({
   selector: 'app-favorites',
@@ -7,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoritesComponent implements OnInit {
 
+  favorites:SearchData[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
-    console.log('favorites')
+    let storedData: any = localStorage.getItem('favoriteSearch')
+    this.favorites = JSON.parse(storedData)
   }
 
   deleteFav() {

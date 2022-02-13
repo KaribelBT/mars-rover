@@ -1,6 +1,6 @@
-<mat-chip-list aria-label="Fish selection">
-    <mat-chip color="primary" selected>  
-        <span>holaaaaaa</span>
+<mat-chip-list aria-label="Favorites selection">
+    <mat-chip color="primary" selected *ngFor="let favorite of favorites">  
+        <span>{{favorite.rover}} {{favorite.camera}} {{favorite.earth_date}} {{favorite.sol}}</span>
         <button (click)="deleteFav()" type="button" matChipRemove>
             <mat-icon aria-hidden="false" aria-label="cancel icon" class="material-icons color_white">cancel</mat-icon>
         </button>
