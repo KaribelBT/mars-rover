@@ -10,6 +10,7 @@ import { FiltersModule } from './filters/filters.module';
 import { GridModule } from './grid/grid.module';
 import { AppService } from './app.service';
 import { FavoritesModule } from './favorites/favorites.module';
+import { ImagesLazyloadModule } from './shared/images-lazyload/images-lazyload.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FavoritesModule } from './favorites/favorites.module';
     FiltersModule,
     FavoritesModule,
     GridModule,
+    ImagesLazyloadModule
   ],
   providers: [
     AppService

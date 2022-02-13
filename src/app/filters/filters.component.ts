@@ -20,7 +20,7 @@ import { MatButton } from '@angular/material/button';
 import { ErrorStateMatcher } from '@angular/material/core';
 import * as moment from 'moment';
 import { SearchData } from '../interfaces/search-data';
-import { StorageService } from '../storage.service'
+import { StorageService } from '../shared/storage.service'
 
 //TO DO: FIND A BETTER WAY TO VALIDATE EMPTY FORM WHEN COMPONENT INITS
 

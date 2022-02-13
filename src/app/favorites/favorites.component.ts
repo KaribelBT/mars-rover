@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { SearchData } from '../interfaces/search-data';
-import { StorageService } from '../storage.service';
+import { StorageService } from '../shared/storage.service';
 
 
 @Component({
