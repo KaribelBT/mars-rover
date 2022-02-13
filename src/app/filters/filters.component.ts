@@ -58,7 +58,6 @@ export class FiltersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('holaa')
   }
 
   public calendarSelected(event:string) {
@@ -78,8 +77,26 @@ export class FiltersComponent implements OnInit {
       camera: this.search.value.camera
     }
     this.formData.emit(submit)
-    formDirective.resetForm();
+    //formDirective.resetForm();
     this.search.reset(); 
   }
 
+  public addFavorite () {
+    console.log(this.search.value)
+    //Adding values to the storage.
+    let storedData: any = localStorage.getItem('favoriteSearch')
+    const searchValue = this.search.value;
+    let searchValues = []
+    if(!storedData && this.search.value){
+      searchValues.push(searchValue)
+    }else{
+      let parsedData = JSON.parse(storedData)
+      parsedData.push(searchValue)
+      searchValues = parsedData
+    }
+    localStorage.setItem('favoriteSearch', JSON.stringify(searchValues))
+    //let favoriteSearch = localStorage.getItem('favoriteSearch');
+
+    
+  }
 }
