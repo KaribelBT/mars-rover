@@ -22,8 +22,6 @@ import * as moment from 'moment';
 import { SearchData } from '../interfaces/search-data';
 import { StorageService } from '../shared/storage.service'
 
-//TO DO: FIND A BETTER WAY TO VALIDATE EMPTY FORM WHEN COMPONENT INITS
-
 export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
         const isSubmitted = form && form.submitted;
