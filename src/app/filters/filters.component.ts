@@ -1,7 +1,10 @@
 import { 
+    AfterViewInit,
     Component, 
+    ElementRef, 
     EventEmitter, 
     Output,
+    ViewChild,
     ViewEncapsulation
   } from '@angular/core';
 import { 
@@ -12,10 +15,13 @@ import {
     NgForm, 
     Validators 
 } from '@angular/forms';
+import { MatButton } from '@angular/material/button';
 import { ErrorStateMatcher } from '@angular/material/core';
 import * as moment from 'moment';
 import { SearchData } from '../interfaces/search-data';
 import { StorageService } from '../storage.service'
+
+//TO DO: FIND A BETTER WAY TO VALIDATE EMPTY FORM WHEN COMPONENT INITS
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -31,7 +37,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     encapsulation: ViewEncapsulation.None
 })
 
-export class FiltersComponent {
+export class FiltersComponent implements AfterViewInit {
 
     rovers: string[]= ['curiosity', 'opportunity', 'spirit'];
     dateTypes: string[]= ['sol', 'earth'];
@@ -48,6 +54,7 @@ export class FiltersComponent {
     roverOption: string = '';  
 
     @Output() searchData = new EventEmitter<SearchData>();
+    @ViewChild('resetBtn')resetBtn: MatButton | undefined;
 
     errorMessages = {
         required: 'Required'
@@ -74,6 +81,13 @@ export class FiltersComponent {
                 { value: '' }
             )
         })
+        
+    }
+
+    ngAfterViewInit(): void {
+        if(this.resetBtn){
+            this.resetBtn._elementRef.nativeElement.click();
+        }        
     }
 
     private parseSearchData(form: FormGroup): SearchData {
@@ -103,6 +117,7 @@ export class FiltersComponent {
 
     public roverSelected(event:string) {
         this.roverOption = event;
+        console.log(this.resetBtn);
     }
 
     public searchSubmit() {  
@@ -129,11 +144,11 @@ export class FiltersComponent {
 
     public resetForm(formDirective: FormGroupDirective){
         if(formDirective) {
-            formDirective.resetForm();
-            this.search.reset();
-            this.calendarType = '';
-            this.roverOption = ''; 
-            this.resetValidation(); 
+            formDirective.resetForm();            
         }    
+        this.search.reset();
+        this.calendarType = '';
+        this.roverOption = ''; 
+        this.resetValidation(); 
     }
 }
