@@ -17,8 +17,11 @@ export class FavoritesComponent implements OnInit {
     this.favorites = JSON.parse(storedData)
   }
 
-  deleteFav() {
-    console.log('deleted')
+  deleteFav(id:number) {
+    this.favorites.splice(this.favorites.findIndex(function(i){
+      return i.id === id;
+    }), 1);
+    localStorage.setItem('favoriteSearch', JSON.stringify(this.favorites))    
   }
 
 }

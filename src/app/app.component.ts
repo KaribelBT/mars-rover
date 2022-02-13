@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'mars-rover';
 
   searchData: SearchData = {
+    id: 0,
     rover: '',
   };
 

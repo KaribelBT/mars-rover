@@ -1,7 +1,6 @@
 import { 
     Component, 
     EventEmitter, 
-    OnInit,
     Output,
     ViewEncapsulation
   } from '@angular/core';
@@ -31,7 +30,7 @@ isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | nu
     encapsulation: ViewEncapsulation.None
 })
 
-export class FiltersComponent implements OnInit {
+export class FiltersComponent {
 
     rovers: string[]= ['curiosity', 'opportunity', 'spirit'];
     dateTypes: string[]= ['sol', 'earth'];
@@ -75,12 +74,9 @@ export class FiltersComponent implements OnInit {
         })
     }
 
-    ngOnInit(): void {
-        console.log('filter')
-    }
-
     private parseSearchData(form: FormGroup): SearchData {
         let obj: any = {
+            id:  Math.round(Date.now() * Math.random()),
             rover: form.value.rover,
         }
         if(form.value.dateType === 'sol'){
