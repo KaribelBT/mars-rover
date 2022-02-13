@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SearchData } from './interfaces/search-data';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -18,11 +19,17 @@ export class AppComponent {
     camera: ''
   };
 
-  constructor() { }
+  constructor(
+    private _appService: AppService
+  ) { }
 
   getImages(searchData: any){
     this.searchData = searchData;
-    console.log(this.searchData);    
+    console.log(this.searchData); 
+    this._appService.getRoversData().subscribe(result=>{
+      console.log(result)
+    })
+
   }
 
 
