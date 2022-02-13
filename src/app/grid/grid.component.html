@@ -1,9 +1,16 @@
 <h2 class="title">
-    Results for rover: {{searchData.rover}}, 
-    <span *ngIf="searchData.camera"> camera: {{searchData.camera}},</span>  
-    <span *ngIf="searchData.sol"> Sol date: {{searchData.sol}}</span> 
-    <span *ngIf="searchData.earth_date"> Earth date: {{searchData.earth_date}}</span> 
+    Results for rover: {{searchHistory.rover}}, 
+    <span *ngIf="searchHistory.camera"> camera: {{searchHistory.camera}},</span>  
+    <span *ngIf="searchHistory.sol"> Sol date: {{searchHistory.sol}}</span> 
+    <span *ngIf="searchHistory.earth_date"> Earth date: {{searchHistory.earth_date}}</span> 
 </h2>
+<mat-paginator 
+    [length]="100" 
+    [pageSize]="25" 
+    (page)="onPageChange($event)"
+    *ngIf="orderedPhotos.length > 25"
+>
+</mat-paginator>
 <div class="card-container">    
     <mat-spinner *ngIf="orderedPhotos.length === 0"></mat-spinner>
     <app-card *ngFor="let photo of orderedPhotos" [photo]="photo"></app-card>

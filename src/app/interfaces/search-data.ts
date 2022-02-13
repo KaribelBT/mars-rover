@@ -5,4 +5,5 @@ export interface SearchData
     sol?: string;
     earth_date?: string;
     camera?: string;
+    page?: number;
 }

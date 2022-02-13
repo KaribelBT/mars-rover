@@ -18,8 +18,9 @@ export class AppService {
     getRoversData(searchData: SearchData): Observable<any[]> {
         const date = searchData.earth_date ? `earth_date=${searchData.earth_date}` : `sol=${searchData.sol}`
         const camera = searchData.camera ? `&camera=${searchData.camera}` : ''
+        const page = searchData.page ? `&page=${searchData.page}` : ''
 
-        const url = `${this.api_url}${searchData.rover}/photos?${date}${camera}&api_key=${this.api_key}`;
+        const url = `${this.api_url}${searchData.rover}/photos?${date}${camera}${page}&api_key=${this.api_key}`;
 
         return this._httpClient
             .get<any[]>(url)
