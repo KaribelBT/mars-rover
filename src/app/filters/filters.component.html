@@ -37,6 +37,16 @@
                                 {{ camera }}
                             </mat-option>
                         </div>
+                        <div *ngIf="roverOption === 'opportunity'">
+                            <mat-option *ngFor="let camera of cameras.opportunity" [value]="camera"> 
+                                {{ camera }}
+                            </mat-option>
+                        </div>
+                        <div *ngIf="roverOption === 'spirit'">
+                            <mat-option *ngFor="let camera of cameras.spirit" [value]="camera"> 
+                                {{ camera }}
+                            </mat-option>
+                        </div>
                         
                     </mat-select>
                 </mat-form-field>
