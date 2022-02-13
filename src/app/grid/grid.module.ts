@@ -4,6 +4,7 @@ import { GridComponent } from './grid.component';
 import { CardComponent } from './card/card.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
+import { ImagesLazyloadModule } from '../shared/images-lazyload/images-lazyload.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   imports: [
     CommonModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ImagesLazyloadModule
   ],
   exports: [
     GridComponent
