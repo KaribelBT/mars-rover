@@ -2,6 +2,7 @@ import { Injector, Directive, ElementRef } from '@angular/core';
 import { ImagesLazyloadService } from './images-lazyload.service';
 
 @Directive({
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[loading]',
 })
 export class ImagesLazyloadDirective {
