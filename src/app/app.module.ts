@@ -9,6 +9,7 @@ import { FiltersModule } from './filters/filters.module';
 
 import { GridModule } from './grid/grid.module';
 import { AppService } from './app.service';
+import { FavoritesModule } from './favorites/favorites.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AppService } from './app.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     FiltersModule,
+    FavoritesModule,
     GridModule,
   ],
   providers: [

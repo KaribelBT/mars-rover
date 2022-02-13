@@ -114,7 +114,7 @@ export class FiltersComponent implements OnInit {
         
     }
 
-    public addFavorite(formDirective: FormGroupDirective) {
+    public addFavorite() {
         let storedData: any = localStorage.getItem('favoriteSearch')
         const searchValue = this.parseSearchData(this.search);
         let searchValues = []
