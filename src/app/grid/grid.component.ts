@@ -15,7 +15,6 @@ export class GridComponent {
   constructor() { }
 
   onPageChange(page: any) {
-    console.log(page.pageIndex)
     let searchDataWithPage = {...this.searchHistory, page:page.pageIndex}
     this.searchData.emit(searchDataWithPage);
   }
