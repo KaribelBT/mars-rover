@@ -7,3 +7,30 @@
 .form-container {
     width: 100%;
 }
+
+.form-element-container {
+    margin-right: 15px;
+}
+
+.form {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.inputs {
+    margin-left: 15px;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.icon {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.material-icons.color_white { color: white; }

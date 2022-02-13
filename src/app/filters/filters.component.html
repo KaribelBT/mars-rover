@@ -2,53 +2,61 @@
 
     <div class="form-container">
 
-        <form [formGroup]="search" >
+        <form class="form" [formGroup]="search" >
 
-            <!-- Rover -->
-            <mat-form-field>
-                <mat-label>Rover</mat-label>
-                <mat-select 
-                    formControlName="rover"
-                    placeholder="Select Rover"
-                >
-                    <mat-option *ngFor="let rover of rovers" [value]="rover"> 
-                        {{ rover }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
+            <div class="inputs">
+                <!-- Rover -->
+                <mat-form-field class="form-element-container">
+                    <mat-label>Rover</mat-label>
+                    <mat-select 
+                        formControlName="rover"
+                        placeholder="Select Rover"
+                    >
+                        <mat-option *ngFor="let rover of rovers" [value]="rover"> 
+                            {{ rover }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
 
-            <!-- Date Type -->
-            <mat-form-field>
-                <mat-label>Date Type</mat-label>
-                <mat-select 
-                    formControlName="dateType"
-                    placeholder="Select date type"
-                    (selectionChange)="calendarSelected($event.value)"
-                >
-                    <mat-option *ngFor="let dateType of dateTypes" [value]="dateType"> 
-                        {{ dateType }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
+                <!-- Date Type -->
+                <mat-form-field class="form-element-container">
+                    <mat-label>Date Type</mat-label>
+                    <mat-select 
+                        formControlName="dateType"
+                        placeholder="Select date type"
+                        (selectionChange)="calendarSelected($event.value)"
+                    >
+                        <mat-option *ngFor="let dateType of dateTypes" [value]="dateType"> 
+                            {{ dateType }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
 
-            <!-- Sol Date -->
-            <mat-form-field *ngIf="calendarType === 'sol'"> 
-                <mat-label>Sol Date</mat-label>
-                <input 
-                    type="number" 
-                    matInput 
-                    formControlName="solDate"
-                    placeholder="Select sol date"
-                >                
-            </mat-form-field>
-
-            <!-- Earth Date -->
-            <mat-form-field *ngIf="calendarType === 'earth'" appearance="fill" >
-                <mat-label>Earth Date</mat-label>
-                <input matInput [matDatepicker]="picker">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>             
+                <!-- Sol Date -->
+                <mat-form-field *ngIf="calendarType === 'sol'" class="form-element-container"> 
+                    <mat-label>Sol Date</mat-label>
+                    <input 
+                        type="number" 
+                        matInput 
+                        formControlName="solDate"
+                        placeholder="Select sol date"
+                    >                
+                </mat-form-field>
+                <!-- Earth Date -->
+                <mat-form-field *ngIf="calendarType === 'earth'" appearance="fill" class="form-element-container">
+                    <mat-label>Earth Date</mat-label>
+                    <input matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>     
+            </div>   
+            
+            <div class="buttons">
+                <mat-icon aria-hidden="false" aria-label="search icon" class="material-icons color_white">search</mat-icon>
+                <mat-icon aria-hidden="false" aria-label="search icon" class="material-icons color_white"> favorite</mat-icon>
+                <mat-icon aria-hidden="false" aria-label="search icon" class="material-icons color_white">delete</mat-icon> 
+            </div>
+            
 
         </form>
         
