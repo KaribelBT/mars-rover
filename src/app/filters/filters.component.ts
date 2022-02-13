@@ -57,21 +57,21 @@ export class FiltersComponent implements OnInit {
         private _formBuilder: FormBuilder,
     ) { 
         this.search = this._formBuilder.group({
-        rover: new FormControl(
-            { value: '' },
-            [Validators.required]
-        ),
-        dateType: new FormControl(
-            { value: '' },
-            [Validators.required]
-        ),
-        date: new FormControl(
-            { value: '' },
-            [Validators.required]
-        ),
-        camera: new FormControl(
-            { value: '' }
-        ),
+            rover: new FormControl(
+                { value: '' },
+                [Validators.required]
+            ),
+            dateType: new FormControl(
+                { value: '' },
+                [Validators.required]
+            ),
+            date: new FormControl(
+                { value: '' },
+                [Validators.required]
+            ),
+            camera: new FormControl(
+                { value: '' }
+            )
         })
     }
 
@@ -81,15 +81,15 @@ export class FiltersComponent implements OnInit {
 
     private parseSearchData(form: FormGroup): SearchData {
         let obj: any = {
-        rover: form.value.rover,
+            rover: form.value.rover,
         }
         if(form.value.dateType === 'sol'){
-        obj.sol = form.value.date
+            obj.sol = form.value.date
         }if(form.value.dateType === 'earth'){
-        obj.earth_date = moment(form.value.date).format('YYYY-MM-DD')
+            obj.earth_date = moment(form.value.date).format('YYYY-MM-DD')
         }
         if(form.value.camera.value !== ''){
-        obj.camera = form.value.camera
+            obj.camera = form.value.camera
         }
         return obj
     }
@@ -119,11 +119,11 @@ export class FiltersComponent implements OnInit {
         const searchValue = this.parseSearchData(this.search);
         let searchValues = []
         if(!storedData){
-        searchValues.push(searchValue)
+            searchValues.push(searchValue)
         }else{
-        let parsedData = JSON.parse(storedData)
-        parsedData.push(searchValue)
-        searchValues = parsedData
+            let parsedData = JSON.parse(storedData)
+            parsedData.push(searchValue)
+            searchValues = parsedData
         }
         localStorage.setItem('favoriteSearch', JSON.stringify(searchValues))    
     }
